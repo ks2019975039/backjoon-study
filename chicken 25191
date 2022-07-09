@@ -1,0 +1,40 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class chicken {
+	public static void main(String[] args) throws IOException {
+		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st =new StringTokenizer(bf.readLine());
+		
+		
+		int n =Integer.parseInt(st.nextToken());
+		
+		st=new StringTokenizer(bf.readLine());
+		
+		int a=Integer.parseInt(st.nextToken());
+		int b=Integer.parseInt(st.nextToken());
+		
+		int sum=0;
+		
+		sum=(a/2)+b;
+		
+		if(n>sum) {
+			System.out.println(sum);
+		}
+		else if(n<sum) {
+			System.out.println(n);
+		}
+		else {
+			System.out.println(n);
+		}
+		
+		
+		
+		
+		
+		
+		
+}
+}
