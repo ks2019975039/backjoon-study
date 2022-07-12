@@ -1,0 +1,63 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class guitarlesson {
+	
+	    private static int n, m;
+	    private static int [] arr;
+	    private static int low, high;
+	    
+	    
+	public static void main(String[] args) throws IOException {
+		BufferedReader bf =new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st=new StringTokenizer(bf.readLine());
+		
+		 n = Integer.parseInt(st.nextToken());
+	     m = Integer.parseInt(st.nextToken());
+	     
+	     arr= new int[n];
+	     st = new StringTokenizer(bf.readLine());
+
+	 
+	        for (int i = 0; i < n; i++) {
+	            arr[i] = Integer.parseInt(st.nextToken()); // 배열의 길이 arr
+	            high += arr[i];  //모든 레슨을 하나의 디스크에 넣은 값 :45
+	            low = Math.max(low, arr[i]); //가장 길이가 긴 레슨의 시간 :9
+	        }
+	        
+	        binarySearch();
+
+	        System.out.println(low);
+	    }
+
+	    private static void binarySearch() {
+	        int mid, sum, count;
+
+	        while (low <= high) {
+	            mid = low + high /2;  //27
+	            sum = 0;
+	            count = 0; //블루레이의 개수
+
+	            for (int i = 0; i < n; i++) {
+	                if (sum + arr[i] > mid) {    
+	                    sum = 0;
+	                    count++;
+	                } //처음에 블루레이가 1개 만들어 진다.
+
+	                sum += arr[i];
+	            }
+
+	            if (sum > 0) count++; //나머지 애들로 블루레이를 만들어줌
+
+	            if (count <= m) { //내가 받은 블루레이 개수와 비교
+	                high = mid - 1; 
+	            } else {
+	                low = mid + 1;
+	            }
+	        }
+	    }
+	
+
+}
